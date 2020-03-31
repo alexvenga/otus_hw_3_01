@@ -1,0 +1,15 @@
+{
+  "name": "alexvenga/otushw3001",
+  "description": "description_text",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alexey Bubnov",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "alexvenga/otushw2001": "dev-master"
+  }
+}
