@@ -79,23 +79,41 @@ do {
             break 2;
         }
 
-        // обработка самого запроса
-
-        try {
-            $data = new BracketsMathematicalExpressions($buf);
-            $calculator = new CheckBrackets();
-            if ($calculator->checkBracketsInString($data)) {
-                socket_write($msgsock, "1\n");
-                echo $buf . ': Mathematical string OK' . PHP_EOL;
-            } else {
-                socket_write($msgsock, "0\n");
-                echo $buf . ': Mathematical string ERROR' . PHP_EOL;
-            }
-        } catch (InvalidArgumentException $ex) {
-            socket_write($msgsock, "ERROR: InvalidArgumentException: " . $ex->getMessage() . "\n");
-        } catch (Exception $ex) {
-            socket_write($msgsock, "Exception: " . $ex->getMessage() . "\n");
+        if (isset($pid)) {
+            unset($pid);
         }
+
+        $pid = pcntl_fork();
+
+        if ($pid == -1) {
+            socket_write($msgsock, "Can`t fork process\n");
+        } else if ($pid) {
+            // Код родительского процесса
+            pcntl_wait($status); // Защита против дочерних "Зомби"-процессов
+        } else {
+            // Код дочернего процесса
+
+            echo $pid . ' Child query: "'.$buf.'"' . PHP_EOL;
+
+            // обработка самого запроса
+
+            try {
+                $data = new BracketsMathematicalExpressions($buf);
+                $calculator = new CheckBrackets();
+                if ($calculator->checkBracketsInString($data)) {
+                    socket_write($msgsock, "1\n");
+                    echo $buf . ': Mathematical string OK' . PHP_EOL;
+                } else {
+                    socket_write($msgsock, "0\n");
+                    echo $buf . ': Mathematical string ERROR' . PHP_EOL;
+                }
+            } catch (InvalidArgumentException $ex) {
+                socket_write($msgsock, "ERROR: InvalidArgumentException: " . $ex->getMessage() . "\n");
+            } catch (Exception $ex) {
+                socket_write($msgsock, "Exception: " . $ex->getMessage() . "\n");
+            }
+        }
+
 
     } while (true);
     socket_close($msgsock);
