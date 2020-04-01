@@ -1,0 +1,53 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "872bab53d7c884f7cabe546b8d66e5ed",
+    "packages": [
+        {
+            "name": "alexvenga/otushw2001",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AlexVenga/otus_hw_2_01.git",
+                "reference": "0d53c74a1375dbe7cb5f0d04fd19ae7e3ee8955f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AlexVenga/otus_hw_2_01/zipball/0d53c74a1375dbe7cb5f0d04fd19ae7e3ee8955f",
+                "reference": "0d53c74a1375dbe7cb5f0d04fd19ae7e3ee8955f",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AlexVenga\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexey Bubnov",
+                    "email": "email@example.com"
+                }
+            ],
+            "description": "description_text",
+            "time": "2020-03-21T09:32:14+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "alexvenga/otushw2001": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
