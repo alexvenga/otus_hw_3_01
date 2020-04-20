@@ -10,6 +10,9 @@
     }
   ],
   "require": {
-    "alexvenga/otushw2001": "dev-master"
+    "alexvenga/otushw2001": "dev-master",
+    "ext-sockets": "*",
+    "ext-posix": "*",
+    "ext-pcntl": "*"
   }
 }
